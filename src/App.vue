@@ -38,7 +38,10 @@ import Inbox from './components/Inbox';
 import Message from './components/Message';
 import axios from 'axios';
 
-const API = 'http://localhost:3000/api/v1';
+const API = process.env.VUE_APP_API_URL || 'http://localhost:3000'
+
+// important for sessions!
+// https://medium.com/zero-equals-false/using-cors-in-express-cac7e29b005b
 const transport = axios.create({
   withCredentials: true,
 });
@@ -50,6 +53,7 @@ export default {
     return {
       inboxes: [],
       messages: [],
+      activeInbox: '',
       lastEmailCreated: 'create new email',
     };
   },
@@ -61,6 +65,8 @@ export default {
           this.inboxes = res.data.map((v) => {
             return { mail: v };
           });
+
+          this.activeInbox = this.inboxes[0].mail
         }
       })
       .catch((err) => {
@@ -75,6 +81,7 @@ export default {
         .get(API + `/mail/${mail}`)
         .then((res) => {
           this.messages = res.data;
+          this.activeInbox = mail;
         })
         .catch((err) => {
           console.error(err);
