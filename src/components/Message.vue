@@ -2,7 +2,8 @@
   <div class="message card">
     <h1>{{ message.subject }}</h1>
     <p>{{ message.from }} - {{ message.recived | formatDate }}</p>
-    {{ message.body }}
+    <hr/>
+    <span v-html="message.htmlBody"></span>
   </div>
 </template>
 
