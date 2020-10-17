@@ -3,7 +3,8 @@
     <div class="menu">
       <h3 class="text-center">This is the alpha version for flipper-ui</h3>
       <div class="flipper-bar">
-        <div class="flipper-last-flip ">{{ lastEmailCreated }}</div>
+        <div class="logo"></div>
+        <div class="flipper-last-flip">{{ lastEmailCreated }}</div>
         <button class="button" v-on:click="createInbox">
           FLIP MAIL
         </button>
@@ -11,6 +12,10 @@
       <p class="text-center">
         More Information at:
         <a href="https://github.com/MonksterFX/flipper-ui">GITHUB</a>
+      </p>
+      <p class="small-text text-center">
+      Icon made by <a href="https://freeicons.io/profile/722">Fasil</a> from
+      www.freeicons.io
       </p>
     </div>
 
@@ -31,6 +36,7 @@
       />
     </div>
   </div>
+  
 </template>
 
 <script>
@@ -128,6 +134,15 @@ body {
   /* background-color: blue; */
 }
 
+.logo{
+  background-image: url("assets/logo.svg");
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+  transform: rotate(-15deg);
+}
+
 button {
   justify-self: center;
 
@@ -174,5 +189,9 @@ button {
   display: flex;
   align-self: center;
   justify-self: center;
+}
+
+.small-text{
+  font-size: 10px;
 }
 </style>
