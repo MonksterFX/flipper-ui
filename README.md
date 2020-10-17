@@ -33,7 +33,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Build it with
 
 ```
-docker build --pull --rm --build-arg VUE_APP_API_URL=http://flipper.example.com/api -t flipperui:latest .
+docker build --pull --rm --build-arg VUE_APP_API_URL=https://flipper.example.com/api/v1 -t flipperui:latest .
 ```
 
 Run it with
