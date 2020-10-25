@@ -3,8 +3,8 @@
     <h1>{{ message.subject }}</h1>
     <p>{{ message.from }} - {{ message.recived | formatDate }}</p>
     <hr/>
-    <span v-html="message.htmlBody"></span>
-    <span v-if="!message.htmlBody">{{ message.body }}</span>
+    <span v-if="message.htmlBody.length" v-html="message.htmlBody"></span>
+    <span v-if="!message.htmlBody.length">{{ message.body }}</span>
   </div>
 </template>
 
