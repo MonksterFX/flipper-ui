@@ -78,8 +78,20 @@ export default {
       .catch((err) => {
         console.error(err);
       });
+
+    setTimeout(this.pullMessages, 3000)
   },
   methods: {
+    pullMessages(){
+      transport
+        .get(API + `/mail/${this.activeInbox}`)
+        .then((res) => {
+          this.messages = res.data;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
     activateInbox(mail) {
       // load data for messages
       this.messages = [];

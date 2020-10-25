@@ -4,6 +4,7 @@
     <p>{{ message.from }} - {{ message.recived | formatDate }}</p>
     <hr/>
     <span v-html="message.htmlBody"></span>
+    <span v-if="!message.htmlBody">{{ message.body }}</span>
   </div>
 </template>
 
