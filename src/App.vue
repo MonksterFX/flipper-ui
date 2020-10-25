@@ -71,15 +71,14 @@ export default {
           this.inboxes = res.data.map((v) => {
             return { mail: v };
           });
-
-          this.activeInbox = this.inboxes[0].mail
+          this.activateInbox(this.inboxes[0].mail)
         }
       })
       .catch((err) => {
         console.error(err);
       });
 
-    setTimeout(this.pullMessages, 3000)
+    setInterval(this.pullMessages, 3000)
   },
   methods: {
     pullMessages(){
@@ -87,6 +86,7 @@ export default {
         .get(API + `/mail/${this.activeInbox}`)
         .then((res) => {
           this.messages = res.data;
+          console.log('pullMessages')
         })
         .catch((err) => {
           console.error(err);
